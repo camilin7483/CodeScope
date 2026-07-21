@@ -1,0 +1,16 @@
+# CodeScope build output
+codescope
+codescope.exe
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test
+docs/
