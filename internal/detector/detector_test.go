@@ -8,9 +8,9 @@ import (
 
 func TestDetectLanguage(t *testing.T) {
 	tests := []struct {
-		name    string
-		setup   func(dir string)
-		want    string
+		name  string
+		setup func(dir string)
+		want  string
 	}{
 		{
 			name: "Go project",

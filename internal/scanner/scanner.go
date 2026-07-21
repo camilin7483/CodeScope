@@ -19,14 +19,14 @@ type result struct {
 }
 
 type Scanner struct {
-	root       string
-	ignores    []string
-	skippedDirs []string
+	root         string
+	ignores      []string
+	skippedDirs  []string
 	ignoredCount int
 	binaryCount  int
 	emptyCount   int
 	errorCount   int
-	mu          sync.Mutex
+	mu           sync.Mutex
 }
 
 func New(root string) *Scanner {
@@ -247,23 +247,23 @@ func (s *Scanner) analyzeFile(path string) (*types.FileInfo, error) {
 
 func analyzeContent(r io.Reader, path string, size int64, lang types.Language, cat types.FileCategory) *types.FileInfo {
 	var (
-		codeLines      int
-		commentLines   int
-		blankLines     int
-		totalLines     int
-		inBlock        bool
-		functions      []types.Function
+		codeLines       int
+		commentLines    int
+		blankLines      int
+		totalLines      int
+		inBlock         bool
+		functions       []types.Function
 		totalComplexity int
-		classes        int
-		structs        int
-		interfaces     int
-		imports        []string
-		braceDepth     int
-		inFunc         bool
-		inFuncName     string
-		inFuncLine     int
-		inFuncBrace    int
-		funcComplexity int
+		classes         int
+		structs         int
+		interfaces      int
+		imports         []string
+		braceDepth      int
+		inFunc          bool
+		inFuncName      string
+		inFuncLine      int
+		inFuncBrace     int
+		funcComplexity  int
 	)
 
 	commentDef := getCommentDefs(lang)
@@ -377,9 +377,9 @@ func analyzeContent(r io.Reader, path string, size int64, lang types.Language, c
 }
 
 type commentDef struct {
-	line      string
+	line       string
 	blockStart string
-	blockEnd  string
+	blockEnd   string
 }
 
 func getCommentDefs(lang types.Language) commentDef {
@@ -886,7 +886,7 @@ func matchImport(line string, lang types.Language) string {
 		}
 	case types.LanguageDart:
 		if strings.HasPrefix(trimmed, "import ") {
-			start := strings.Index(trimmed, `"`) 
+			start := strings.Index(trimmed, `"`)
 			end := strings.LastIndex(trimmed, `"`)
 			if start < 0 {
 				start = strings.Index(trimmed, `'`)
@@ -969,55 +969,55 @@ func detectLanguageByExt(path string) types.Language {
 	name := strings.ToLower(filepath.Base(path))
 
 	extMap := map[string]types.Language{
-		".go":   types.LanguageGo,
-		".rs":   types.LanguageRust,
-		".js":   types.LanguageJavaScript,
-		".jsx":  types.LanguageJavaScript,
-		".ts":   types.LanguageTypeScript,
-		".tsx":  types.LanguageTypeScript,
-		".mjs":  types.LanguageJavaScript,
-		".cjs":  types.LanguageJavaScript,
-		".mts":  types.LanguageTypeScript,
-		".cts":  types.LanguageTypeScript,
-		".py":   types.LanguagePython,
-		".pyw":  types.LanguagePython,
-		".pyi":  types.LanguagePython,
-		".java": types.LanguageJava,
-		".kt":   types.LanguageKotlin,
-		".kts":  types.LanguageKotlin,
-		".scala":types.LanguageScala,
-		".sc":   types.LanguageScala,
-		".c":    types.LanguageC,
-		".h":    types.LanguageC,
-		".cc":   types.LanguageCpp,
-		".cpp":  types.LanguageCpp,
-		".cxx":  types.LanguageCpp,
-		".hpp":  types.LanguageCpp,
-		".hh":   types.LanguageCpp,
-		".hxx":  types.LanguageCpp,
-		".cs":   types.LanguageCSharp,
-		".rb":   types.LanguageRuby,
-		".rake": types.LanguageRuby,
+		".go":      types.LanguageGo,
+		".rs":      types.LanguageRust,
+		".js":      types.LanguageJavaScript,
+		".jsx":     types.LanguageJavaScript,
+		".ts":      types.LanguageTypeScript,
+		".tsx":     types.LanguageTypeScript,
+		".mjs":     types.LanguageJavaScript,
+		".cjs":     types.LanguageJavaScript,
+		".mts":     types.LanguageTypeScript,
+		".cts":     types.LanguageTypeScript,
+		".py":      types.LanguagePython,
+		".pyw":     types.LanguagePython,
+		".pyi":     types.LanguagePython,
+		".java":    types.LanguageJava,
+		".kt":      types.LanguageKotlin,
+		".kts":     types.LanguageKotlin,
+		".scala":   types.LanguageScala,
+		".sc":      types.LanguageScala,
+		".c":       types.LanguageC,
+		".h":       types.LanguageC,
+		".cc":      types.LanguageCpp,
+		".cpp":     types.LanguageCpp,
+		".cxx":     types.LanguageCpp,
+		".hpp":     types.LanguageCpp,
+		".hh":      types.LanguageCpp,
+		".hxx":     types.LanguageCpp,
+		".cs":      types.LanguageCSharp,
+		".rb":      types.LanguageRuby,
+		".rake":    types.LanguageRuby,
 		".gemspec": types.LanguageRuby,
-		".php":  types.LanguagePHP,
-		".phtml":types.LanguagePHP,
-		".swift":types.LanguageSwift,
-		".dart": types.LanguageDart,
-		".lua":  types.LanguageLua,
-		".zig":  types.LanguageZig,
-		".ex":   types.LanguageElixir,
-		".exs":  types.LanguageElixir,
-		".hs":   types.LanguageHaskell,
-		".lhs":  types.LanguageHaskell,
-		".erl":  types.LanguageErlang,
-		".hrl":  types.LanguageErlang,
-		".clj":  types.LanguageClojure,
-		".cljs": types.LanguageClojure,
-		".cljc": types.LanguageClojure,
-		".edn":  types.LanguageClojure,
-		".rkt":  types.LanguageRacket,
-		".jl":   types.LanguageJulia,
-		".nim":  types.LanguageNim,
+		".php":     types.LanguagePHP,
+		".phtml":   types.LanguagePHP,
+		".swift":   types.LanguageSwift,
+		".dart":    types.LanguageDart,
+		".lua":     types.LanguageLua,
+		".zig":     types.LanguageZig,
+		".ex":      types.LanguageElixir,
+		".exs":     types.LanguageElixir,
+		".hs":      types.LanguageHaskell,
+		".lhs":     types.LanguageHaskell,
+		".erl":     types.LanguageErlang,
+		".hrl":     types.LanguageErlang,
+		".clj":     types.LanguageClojure,
+		".cljs":    types.LanguageClojure,
+		".cljc":    types.LanguageClojure,
+		".edn":     types.LanguageClojure,
+		".rkt":     types.LanguageRacket,
+		".jl":      types.LanguageJulia,
+		".nim":     types.LanguageNim,
 	}
 
 	if lang, ok := extMap[ext]; ok {
@@ -1055,14 +1055,14 @@ func categorizeFile(path string, lang types.Language) types.FileCategory {
 
 func shouldSkipDir(name string) bool {
 	skipDirs := map[string]bool{
-		"node_modules":    true, ".git": true, "__pycache__": true,
-		".venv":           true, "venv": true, "vendor": true,
-		".next":           true, ".nuxt": true, "dist": true,
-		"build":           true, "target": true, "bin": true,
-		"obj":             true, ".cache": true, ".yarn": true,
-		".pnp":            true, ".svelte-kit": true, ".turbo": true,
-		"coverage":        true, ".nyc_output": true, ".swc": true,
-		".dart_tool":      true, "third_party": true,
+		"node_modules": true, ".git": true, "__pycache__": true,
+		".venv": true, "venv": true, "vendor": true,
+		".next": true, ".nuxt": true, "dist": true,
+		"build": true, "target": true, "bin": true,
+		"obj": true, ".cache": true, ".yarn": true,
+		".pnp": true, ".svelte-kit": true, ".turbo": true,
+		"coverage": true, ".nyc_output": true, ".swc": true,
+		".dart_tool": true, "third_party": true,
 	}
 	return skipDirs[name]
 }

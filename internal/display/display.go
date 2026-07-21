@@ -12,16 +12,16 @@ import (
 )
 
 const (
-	colorReset   = "\033[0m"
-	ColorRed     = "\033[31m"
-	ColorGreen   = "\033[32m"
-	ColorYellow  = "\033[33m"
-	colorBlue    = "\033[34m"
-	colorPurple  = "\033[35m"
-	colorCyan    = "\033[36m"
-	colorWhite   = "\033[37m"
-	colorBold    = "\033[1m"
-	colorDim     = "\033[2m"
+	colorReset  = "\033[0m"
+	ColorRed    = "\033[31m"
+	ColorGreen  = "\033[32m"
+	ColorYellow = "\033[33m"
+	colorBlue   = "\033[34m"
+	colorPurple = "\033[35m"
+	colorCyan   = "\033[36m"
+	colorWhite  = "\033[37m"
+	colorBold   = "\033[1m"
+	colorDim    = "\033[2m"
 )
 
 var noColor = os.Getenv("NO_COLOR") != "" || !isTerminal()
@@ -200,7 +200,7 @@ func PrintMetrics(m *types.Metrics) {
 
 	t.AddRow([]string{"Comment Ratio", formatPercent(m.CommentRatio), commentRating})
 	t.AddRow([]string{"Average File Size", formatFloat(m.AvgFileSize) + " lines", fileSizeRating})
-	t.AddRow([]string{"Test Coverage (files)", formatPercent(float64(m.TestFiles)/float64(m.SourceFiles+m.TestFiles)*100), testRating})
+	t.AddRow([]string{"Test Coverage (files)", formatPercent(float64(m.TestFiles) / float64(m.SourceFiles+m.TestFiles) * 100), testRating})
 	t.AddRow([]string{"Function Count", formatCount(m.TotalFunctions), ""})
 	t.AddRow([]string{"Code/Blank Ratio", fmt.Sprintf("%.1f", float64(m.CodeLines)/float64(m.BlankLines+1)), ""})
 	fmt.Println(t.Render())
@@ -283,7 +283,6 @@ func PrintArchitecture(entryPoints []string, modules []string, folderOrg map[str
 		fmt.Println()
 	}
 }
-
 
 func PrintTree(node *types.DirNode, prefix string, isLast bool) {
 	if node == nil {

@@ -121,20 +121,20 @@ type DirInfo struct {
 }
 
 type ScanStats struct {
-	TotalFiles    int      `json:"total_files"`
-	SourceFiles   int      `json:"source_files"`
-	IgnoredFiles  int      `json:"ignored_files"`
-	IgnoredDirs   []string `json:"ignored_dirs"`
-	BinaryFiles   int      `json:"binary_files"`
-	EmptyFiles    int      `json:"empty_files"`
-	ErrorFiles    int      `json:"error_files"`
-	ScanTime      time.Duration `json:"scan_time"`
+	TotalFiles   int           `json:"total_files"`
+	SourceFiles  int           `json:"source_files"`
+	IgnoredFiles int           `json:"ignored_files"`
+	IgnoredDirs  []string      `json:"ignored_dirs"`
+	BinaryFiles  int           `json:"binary_files"`
+	EmptyFiles   int           `json:"empty_files"`
+	ErrorFiles   int           `json:"error_files"`
+	ScanTime     time.Duration `json:"scan_time"`
 }
 
 type Metrics struct {
-	Project  Project       `json:"project"`
-	ScanTime time.Duration `json:"scan_time"`
-	ScanStats ScanStats    `json:"scan_stats"`
+	Project   Project       `json:"project"`
+	ScanTime  time.Duration `json:"scan_time"`
+	ScanStats ScanStats     `json:"scan_stats"`
 
 	TotalFiles  int `json:"total_files"`
 	SourceFiles int `json:"source_files"`
@@ -143,15 +143,15 @@ type Metrics struct {
 	ConfigFiles int `json:"config_files"`
 	AssetFiles  int `json:"asset_files"`
 
-	TotalLines      int `json:"total_lines"`
-	CodeLines       int `json:"code_lines"`
-	CommentLines    int `json:"comment_lines"`
-	BlankLines      int `json:"blank_lines"`
+	TotalLines   int `json:"total_lines"`
+	CodeLines    int `json:"code_lines"`
+	CommentLines int `json:"comment_lines"`
+	BlankLines   int `json:"blank_lines"`
 
-	TotalFunctions    int     `json:"total_functions"`
-	TotalClasses      int     `json:"total_classes"`
-	TotalStructs      int     `json:"total_structs"`
-	TotalInterfaces   int     `json:"total_interfaces"`
+	TotalFunctions  int `json:"total_functions"`
+	TotalClasses    int `json:"total_classes"`
+	TotalStructs    int `json:"total_structs"`
+	TotalInterfaces int `json:"total_interfaces"`
 
 	CommentRatio    float64 `json:"comment_ratio"`
 	AvgFileSize     float64 `json:"avg_file_size"`
@@ -244,15 +244,15 @@ type HealthCheck struct {
 }
 
 type HealthReport struct {
-	Score           int           `json:"score"`
-	CriticalPass    int           `json:"critical_pass"`
-	CriticalTotal   int           `json:"critical_total"`
-	RecommendedPass int           `json:"recommended_pass"`
-	RecommendedTotal int          `json:"recommended_total"`
-	OptionalPass    int           `json:"optional_pass"`
-	OptionalTotal   int           `json:"optional_total"`
-	Checks          []HealthCheck `json:"checks"`
-	Recommendations []string      `json:"recommendations"`
+	Score            int           `json:"score"`
+	CriticalPass     int           `json:"critical_pass"`
+	CriticalTotal    int           `json:"critical_total"`
+	RecommendedPass  int           `json:"recommended_pass"`
+	RecommendedTotal int           `json:"recommended_total"`
+	OptionalPass     int           `json:"optional_pass"`
+	OptionalTotal    int           `json:"optional_total"`
+	Checks           []HealthCheck `json:"checks"`
+	Recommendations  []string      `json:"recommendations"`
 }
 
 type ArchAnalysis struct {

@@ -12,11 +12,11 @@ import (
 )
 
 type Report struct {
-	Project  types.Project      `json:"project"`
-	Metrics  types.Metrics      `json:"metrics"`
-	Health   *types.HealthReport `json:"health,omitempty"`
-	Arch     *types.ArchAnalysis `json:"architecture,omitempty"`
-	Graph    *types.Graph        `json:"graph,omitempty"`
+	Project types.Project       `json:"project"`
+	Metrics types.Metrics       `json:"metrics"`
+	Health  *types.HealthReport `json:"health,omitempty"`
+	Arch    *types.ArchAnalysis `json:"architecture,omitempty"`
+	Graph   *types.Graph        `json:"graph,omitempty"`
 }
 
 func ToJSON(report Report, pretty bool) (string, error) {

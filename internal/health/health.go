@@ -18,8 +18,12 @@ func Check(project types.Project, files []types.FileInfo) *types.HealthReport {
 		weight  int
 		checkFn func() types.HealthCheck
 	}{
-		{"README", 20, func() types.HealthCheck { return checkCriticalFile(project.Root, types.HealthCritical, 20, "README.md", "README.txt", "README") }},
-		{"LICENSE", 15, func() types.HealthCheck { return checkCriticalFile(project.Root, types.HealthCritical, 15, "LICENSE", "LICENSE.txt", "LICENSE.md") }},
+		{"README", 20, func() types.HealthCheck {
+			return checkCriticalFile(project.Root, types.HealthCritical, 20, "README.md", "README.txt", "README")
+		}},
+		{"LICENSE", 15, func() types.HealthCheck {
+			return checkCriticalFile(project.Root, types.HealthCritical, 15, "LICENSE", "LICENSE.txt", "LICENSE.md")
+		}},
 		{"Tests", 20, func() types.HealthCheck { return checkTests(project, files) }},
 		{"Build System", 10, func() types.HealthCheck { return checkBuildSystem(project) }},
 	}
@@ -29,10 +33,18 @@ func Check(project types.Project, files []types.FileInfo) *types.HealthReport {
 		weight  int
 		checkFn func() types.HealthCheck
 	}{
-		{"CHANGELOG", 8, func() types.HealthCheck { return checkRecommendedFile(project.Root, types.HealthRecommended, 8, "CHANGELOG.md", "CHANGELOG", "CHANGELOG.txt") }},
-		{"CONTRIBUTING", 5, func() types.HealthCheck { return checkRecommendedFile(project.Root, types.HealthRecommended, 5, "CONTRIBUTING.md", "CONTRIBUTING", "CONTRIBUTING.txt") }},
-		{".gitignore", 8, func() types.HealthCheck { return checkRecommendedFile(project.Root, types.HealthRecommended, 8, ".gitignore") }},
-		{".editorconfig", 5, func() types.HealthCheck { return checkRecommendedFile(project.Root, types.HealthRecommended, 5, ".editorconfig") }},
+		{"CHANGELOG", 8, func() types.HealthCheck {
+			return checkRecommendedFile(project.Root, types.HealthRecommended, 8, "CHANGELOG.md", "CHANGELOG", "CHANGELOG.txt")
+		}},
+		{"CONTRIBUTING", 5, func() types.HealthCheck {
+			return checkRecommendedFile(project.Root, types.HealthRecommended, 5, "CONTRIBUTING.md", "CONTRIBUTING", "CONTRIBUTING.txt")
+		}},
+		{".gitignore", 8, func() types.HealthCheck {
+			return checkRecommendedFile(project.Root, types.HealthRecommended, 8, ".gitignore")
+		}},
+		{".editorconfig", 5, func() types.HealthCheck {
+			return checkRecommendedFile(project.Root, types.HealthRecommended, 5, ".editorconfig")
+		}},
 		{"CI Configuration", 8, func() types.HealthCheck { return checkCI(project) }},
 		{"Git Repository", 3, func() types.HealthCheck { return checkGit(project) }},
 	}
@@ -42,8 +54,12 @@ func Check(project types.Project, files []types.FileInfo) *types.HealthReport {
 		weight  int
 		checkFn func() types.HealthCheck
 	}{
-		{"SECURITY.md", 3, func() types.HealthCheck { return checkOptionalFile(project.Root, types.HealthOptional, 3, "SECURITY.md", "SECURITY") }},
-		{"CODE_OF_CONDUCT", 3, func() types.HealthCheck { return checkOptionalFile(project.Root, types.HealthOptional, 3, "CODE_OF_CONDUCT.md", "CODE_OF_CONDUCT") }},
+		{"SECURITY.md", 3, func() types.HealthCheck {
+			return checkOptionalFile(project.Root, types.HealthOptional, 3, "SECURITY.md", "SECURITY")
+		}},
+		{"CODE_OF_CONDUCT", 3, func() types.HealthCheck {
+			return checkOptionalFile(project.Root, types.HealthOptional, 3, "CODE_OF_CONDUCT.md", "CODE_OF_CONDUCT")
+		}},
 		{"Documentation", 5, func() types.HealthCheck { return checkDocs(files) }},
 		{"Organization", 5, func() types.HealthCheck { return checkOrganization(files) }},
 	}
